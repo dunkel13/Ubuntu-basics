@@ -1,0 +1,51 @@
+fm@fm:~$ sudo su -
+[sudo] password for fm: 
+root@fm:~# df -Th
+      S.ficheros     Tipo     Tamaño Usados  Disp Uso% Montado en
+      udev           devtmpfs    16G      0   16G   0% /dev
+      tmpfs          tmpfs      3,2G   2,2M  3,2G   1% /run
+      /dev/nvme0n1p5 ext4       457G   121G  313G  28% /
+      tmpfs          tmpfs       16G    93M   16G   1% /dev/shm
+      tmpfs          tmpfs      5,0M   4,0K  5,0M   1% /run/lock
+      tmpfs          tmpfs       16G      0   16G   0% /sys/fs/cgroup
+      /dev/loop0     squashfs    56M    56M     0 100% /snap/core18/2074
+      /dev/nvme0n1p1 vfat       511M   4,0K  511M   1% /boot/efi
+      /dev/loop3     squashfs    66M    66M     0 100% /snap/gtk-common-themes/1515
+      /dev/loop1     squashfs   219M   219M     0 100% /snap/gnome-3-34-1804/72
+      /dev/loop2     squashfs    65M    65M     0 100% /snap/gtk-common-themes/1514
+      /dev/loop4     squashfs   219M   219M     0 100% /snap/gnome-3-34-1804/66
+      /dev/loop5     squashfs    62M    62M     0 100% /snap/core20/1081
+      /dev/loop6     squashfs    56M    56M     0 100% /snap/core18/2128
+      /dev/loop7     squashfs    51M    51M     0 100% /snap/snap-store/542
+      /dev/loop8     squashfs   296M   296M     0 100% /snap/vlc/2288
+      /dev/loop9     squashfs   205M   205M     0 100% /snap/pinta/11
+      /dev/loop10    squashfs    33M    33M     0 100% /snap/snapd/12704
+      /dev/loop11    squashfs    51M    51M     0 100% /snap/snap-store/547
+      /dev/loop12    squashfs   296M   296M     0 100% /snap/vlc/2344
+      /dev/loop13    squashfs    33M    33M     0 100% /snap/snapd/12883
+      tmpfs          tmpfs      3,2G    20K  3,2G   1% /run/user/125
+      tmpfs          tmpfs      3,2G    32K  3,2G   1% /run/user/1000
+      /dev/sdb1      vfat       7,8G   1,8G  6,1G  22% /media/fm/1AB8-D38D
+
+root@fm:~# umount /media/fm/1AB8-D38D
+root@fm:~# dosfsck -a /dev/sdb1 
+      fsck.fat 4.1 (2017-01-24)
+      0x41: Dirty bit is set. Fs was not properly unmounted and some data may be corrupt.
+       Automatically removing dirty bit.
+      /
+        Has a large number of bad entries. (2/5)
+        Not dropping root directory.
+      /ses-usb-installer.log
+        Bad short file name ( ).
+        Auto-renaming it.
+        Renamed to FSCK0000.000
+      /.device_info_b8338260-d1cd-4e87-94bd-9aabe4f86e08
+        Bad short file name ( ).
+        Auto-renaming it.
+        Renamed to FSCK0000.001
+      /Schumacher.2021.1080p.WEB.x264
+       Start does point to root directory. Deleting dir. 
+      Reclaimed 448002 unused clusters (1835016192 bytes) in 2 chains.
+      Performing changes.
+      /dev/sdb1: 9 files, 448046/2043870 clusters
+root@fm:~# 
